@@ -10,8 +10,19 @@ def div(n,m):
     return n/m
 
 while True :
-    a = int(input("enter a number"))
-    b = int(input("enter a number"))
+    try :
+
+        a = float(input("enter a number"))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        continue
+
+    try:
+        b = float(input("enter a number"))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        continue
+
     op = input("enter the operator (+,-,*,/)")
     if(op=="+"):
         result = (add(a,b))
@@ -20,17 +31,29 @@ while True :
     elif(op=="*"):
         result = (mul(a,b))
     elif(op=="/"):
+        if(b==0):
+            print("division by zero is not allowed")
+            continue
+
         result = (div(a,b))
-    else:
+    
+    else :
         print("operator out of option")
-    
-    print(result)
-    ask = input("do you want to continue (y/n)")
-    if(ask=="n"):
-        break
-    else:
         continue
+    print(result)
+
+    ask = input("do you want to continue (y/n)")
     
+
+    if(ask=="n"):
+        print("thank you for using the calculator")
+        break
+    elif(ask=="y"):
+        continue
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        continue
+
       
 
     
